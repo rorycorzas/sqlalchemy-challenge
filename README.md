@@ -50,6 +50,60 @@ Important: Remember to close your session at the end of your notebook.
 
 Now that you’ve completed your initial analysis, you’ll design a Flask API based on the queries that you just developed
 
+Note: When you run app.py from Visual Studio Code, left click + Ctrl on file name > Run Python file in terminal. Then you will be able to open a chrome browser on http://127.0.0.1:5000, and change between the 
+routes defined in the api. 
+
+# Output when you Run Python file in terminal
+
+(dev) auroracorzas@192 sqlalchemy-challenge % /Users/auroracorzas/anaconda3/envs/dev/bin/python /Users/auroracorzas/Documents/GitHub/sqlalchemy-challenge/app.py
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+ * Restarting with watchdog (fsevents)
+ * Debugger is active!
+ * Debugger PIN: 173-226-790
+127.0.0.1 - - [06/Oct/2023 14:19:45] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [06/Oct/2023 14:19:52] "GET /api/v1.0/start HTTP/1.1" 200 -
+127.0.0.1 - - [06/Oct/2023 14:20:25] "GET /api/v1.0/2016-08-23 HTTP/1.1" 200 -
+Exception during reset or similar
+
+# Part of app.py code with available routes defined
+
+@app.route("/") # / main url
+def welcome():
+    return (
+        f"Available Routes:<br/>"
+        f"/api/v1.0/precipitation<br/>"
+        f"/api/v1.0/stations<br/>"
+        f"/api/v1.0/tobs<br/>"
+        f"/api/v1.0/start<br/>"
+        f"/api/v1.0/start/end<br/>"
+    )
+
+To access each one simply add the termination to the http://127.0.0.1:5000
+
+Like this:
+http://127.0.0.1:5000/api/v1.0/precipitation
+http://127.0.0.1:5000/api/v1.0/stations
+
+In the case of tobs, it is defined a constant to pick the info from this particular TOBS = 'USC00519281'
+http://127.0.0.1:5000/api/v1.0/tobs
+
+And when you want to look for a particular date in this two links you must declare in url which date you want the json information in format (YYYY-MM-DD)
+http://127.0.0.1:5000/api/v1.0/start
+http://127.0.0.1:5000/api/v1.0/start/end
+
+For example: 
+http://127.0.0.1:5000/api/v1.0/2016-08-23
+http://127.0.0.1:5000/api/v1.0/2016-08-23/2016-10-23
+
+# Important: DO NOT forget to CLOSE all open sessions in browser and terminal
+
+Happy life!
+
+
 
 
 
